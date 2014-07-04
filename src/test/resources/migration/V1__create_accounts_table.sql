@@ -1,0 +1,30 @@
+--CREATE TABLE accounts (id int(11), uuid varchar(36));
+
+CREATE TABLE accounts (
+  id int(11) NOT NULL auto_increment,
+  category varchar(255) default NULL,
+  owner_id int(11) default NULL,
+  created_at datetime default today,
+  updated_at datetime default today,
+  name varchar(255) default NULL,
+  ignored_tags text,
+  workflow_state varchar(255) default 'trial_pending',
+  trial_expires_at datetime default NULL,
+  disabled tinyint(1) default '0',
+  logo_amazon_key varchar(255) default NULL,
+  plan_id int(11) default NULL,
+  creator_id int(11) default NULL,
+  background_amazon_key varchar(255) default NULL,
+  topbar_design varchar(255) default NULL,
+  trial_started_at datetime default NULL,
+  enterprise_id int(11) default NULL,
+  enable_publishing tinyint(1) default '1',
+  allow_malicious_files tinyint(1) default '0',
+  multipart_allowed tinyint(1) default '0',
+  website_url varchar(255) default NULL,
+  current_bucket_id int(11) default NULL,
+  uuid varchar(36) default NULL,
+  supernova_topbar_design varchar(255) default NULL,
+  supernova_sidebar_design varchar(255) default NULL,
+  subscription_status varchar(255) default NULL
+)
