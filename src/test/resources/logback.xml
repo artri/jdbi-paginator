@@ -6,21 +6,9 @@
 		</encoder>
 	</appender>
 
-	<logger name="com.workshare.supernova" level="DEBUG"/>
+	<logger name="org.skife.jdbi" level="INFO"/>
 
-	<logger name="org.apache.http" level="INFO"/>
-	<logger name="org.apache.http.wire" level="DEBUG"/>
-	<logger name="org.skife.jdbi" level="TRACE"/>
-
-	<!-- Avoid periodic messages about "no need to flush yadda yadda yadda" -->
-	<logger name="com.workshare.supernova.api.groups.persistence" level="INFO"/>
-	<logger name="com.workshare.supernova.api.mixpanel.Mixpanel" level="INFO"/>
-
-<!--
-	<logger name="com.workshare.supernova.persistence.WriteBehindDao" level="INFO"/>
--->
-
-	<root level="TRACE">
+	<root level="INFO">
 		<appender-ref ref="STDOUT" />
 	</root>
 

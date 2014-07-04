@@ -84,6 +84,6 @@ public class TestPojo {
 
     @Override
     public String toString() {
-        return "CirrusFolder [cirrusId=" + cirrusId + ", uuid=" + uuid + ", ownerId=" + ownerId + ", ancestry=" + ancestry + ", name=" + name + ", deleted=" + deleted + "]";
+        return "TestPojo [cirrusId=" + cirrusId + ", uuid=" + uuid + ", ownerId=" + ownerId + ", ancestry=" + ancestry + ", name=" + name + ", deleted=" + deleted + "]";
     }
 }

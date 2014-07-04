@@ -16,7 +16,6 @@ import org.skife.jdbi.v2.Handle;
 import org.skife.jdbi.v2.logging.SLF4JLog;
 
 import com.googlecode.flyway.core.Flyway;
-import com.workshare.jdbi.pagination.PaginatedDaoImpl;
 import com.workshare.supernova.db.sync.rails.dao.pagination.dao.TestDao;
 import com.workshare.supernova.db.sync.rails.dao.pagination.filter.TestFilter;
 import com.workshare.supernova.db.sync.rails.dao.pagination.model.TestPojo;
@@ -24,6 +23,7 @@ import com.workshare.supernova.db.sync.rails.dao.pagination.model.TestPojo;
 public class PaginatedDaoImplTest {
     private TestDao testDao;
     private Flyway flyway;
+    private Handle h;
 
     private PaginatedDaoImpl<TestPojo> paginatedDaoImpl;
     private int pageSize;
@@ -35,7 +35,7 @@ public class PaginatedDaoImplTest {
         DataSource ds = JdbcConnectionPool.create("jdbc:h2:mem:test", "username", "password");
         DBI dbi = new DBI(ds);
         dbi.setSQLLog(new SLF4JLog());
-        Handle h = dbi.open();
+        h = dbi.open();
 
         flyway = new Flyway();
         flyway.setDataSource(ds);
@@ -50,6 +50,7 @@ public class PaginatedDaoImplTest {
     @After
     public void quit() {
         flyway.clean();
+        h.close();
     }
 
     @Test
@@ -117,7 +118,6 @@ public class PaginatedDaoImplTest {
             TestPojo testPojo = newTestPojo(i, false);
             cirrusFoldersList.add(testPojo);
             testDao.create(testPojo);
-            System.out.println("Added CirrusFolder: " + testPojo);
         }
         return cirrusFoldersList;
     }
