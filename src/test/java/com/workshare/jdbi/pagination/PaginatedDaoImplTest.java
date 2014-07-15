@@ -90,10 +90,14 @@ public class PaginatedDaoImplTest {
         paginatedDaoImpl = new PaginatedDaoImpl<TestPojo>(testDao, testFilter, pageSize);
 
         int numberOfPages = 0;
-        for (Collection<TestPojo> cirrusFolderPage : paginatedDaoImpl) {
+        int numberOfItems = 0;
+
+        for (Collection<TestPojo> page : paginatedDaoImpl) {
             numberOfPages++;
+            numberOfItems += page.size();
         }
 
+        Assert.assertEquals(25, numberOfItems);
         Assert.assertEquals(3, numberOfPages);
         Assert.assertEquals(3, paginatedDaoImpl.getNumberOfPages());
     }
@@ -103,11 +107,14 @@ public class PaginatedDaoImplTest {
         createNFolders(testDao, 20);
         paginatedDaoImpl = new PaginatedDaoImpl<TestPojo>(testDao, testFilter, pageSize);
         int numberOfPages = 0;
+        int numberOfItems = 0;
 
-        for (Collection<TestPojo> cirrusFolderPage : paginatedDaoImpl) {
+        for (Collection<TestPojo> page : paginatedDaoImpl) {
             numberOfPages++;
+            numberOfItems += page.size();
         }
 
+        Assert.assertEquals(20, numberOfItems);
         Assert.assertEquals(2, numberOfPages);
         Assert.assertEquals(2, paginatedDaoImpl.getNumberOfPages());
     }

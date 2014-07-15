@@ -26,8 +26,7 @@ public class PaginatedDaoImpl<T> implements Iterator<Collection<T>>, Iterable<Co
 
     public Collection<T> getPage(int pageNumber) {
         int from = pageNumber * pageSize;
-        int to = from + pageSize;
-        return paginatedDao.loadPage(filter, from, to);
+        return paginatedDao.loadPage(filter, from, pageSize);
     }
 
     public int getCount() {
